@@ -1,4 +1,5 @@
 from xml_objectifier import objectifier
+import local_settings
 
 
 class Question(objectifier.Question):

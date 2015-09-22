@@ -9,7 +9,7 @@ Local Settings for the renderer.
 TESTING = True 
 
 # MODELS set to True will tell the Application class to use Django's models and ORM.
-MODELS = True
+MODELS = False
 
 # CUSTOM set to True will mean that the views.py will load the CustomApplication class
 # from custom_logic.py rather than the Application class from fs_apps.py.
@@ -23,14 +23,17 @@ SECTION_MAPPING =  {0: 'volunteers', 1: 'volunteers', 2: 'volunteers',
 DB_MAPPING = {'surgery': 'surgeries_id', 'surgeries': 'surgeries_id', 'diabetes': 'diabetes_diagnosed'}
 
 # MODEL_MAPPING maps sections to primary Django models.
-MODEL_MAPPING = {0: Volunteer, 1: Volunteer, 2: Volunteer, 3: Volunteer, 4: Volunteer}
+# MODEL_MAPPING = {0: Volunteer, 1: Volunteer, 2: Volunteer, 3: Volunteer, 4: Volunteer}
+MODEL_MAPPING = {}
 
 # MODEL_FORM_MAPPING maps Django Forms models to sections.  These are used for validation.
-MODEL_FORM_MAPPING = {0: VolunteerForm, 1: VolunteerForm, 2: VolunteerForm,
-                      3: VolunteerForm, 4: VolunteerForm}
+# MODEL_FORM_MAPPING = {0: VolunteerForm, 1: VolunteerForm, 2: VolunteerForm,
+#                       3: VolunteerForm, 4: VolunteerForm}
+MODEL_FORM_MAPPING = {}
 
 # TABLE_MODEL_MAPPING allows secondary mapping between XML and models.
-TABLE_MODEL_MAPPING = {'volunteers': Volunteer, 'appointments': Appointment}
+# TABLE_MODEL_MAPPING = {'volunteers': Volunteer, 'appointments': Appointment}
+TABLE_MODEL_MAPPING = {}
 
 # DATABASE to use if not using models
 DATABASE = 'mysql+pymysql://david:david@localhost:3306/mydb'

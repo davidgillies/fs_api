@@ -1,4 +1,6 @@
 bunch==1.0.1
 Django==1.7.5
+django-extensions==1.5.7
 lxml==3.4.4
+six==1.9.0
 -e git://github.com/davidgillies/xml-objectifier@4115091bdc11c7d788b7a0855f5dee85fd77dcc1#egg=xml_objectifier-master

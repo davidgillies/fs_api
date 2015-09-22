@@ -1,1 +1,4 @@
+bunch==1.0.1
 Django==1.7.5
+lxml==3.4.4
+-e git://github.com/davidgillies/xml-objectifier@4115091bdc11c7d788b7a0855f5dee85fd77dcc1#egg=xml_objectifier-master

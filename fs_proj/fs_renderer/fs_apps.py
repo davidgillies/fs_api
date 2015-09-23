@@ -28,6 +28,22 @@ class Question(objectifier.Question):
             else:
                 self.model = None
 
+    def get_template(self, selection):
+        return {'radio': 'fs_renderer/radio.html',
+                'dropdown': 'fs_renderer/select.html',
+                'text': 'fs_renderer/text.html',
+                'multiline': 'fs_renderer/textarea.html',
+                'range': 'fs_renderer/range.html',
+                'datalist': 'fs_renderer/datalist.html',
+                'search': 'fs_renderer/search.html',
+                'altradio': 'fs_renderer/alt_radio.html',
+                'altdropdown': 'fs_renderer/alt_select.html',
+                'alttext': 'fs_renderer/alt_text.html',
+                'altmultiline': 'fs_renderer/alt_textarea.html',
+                'altrange': 'fs_renderer/alt_range.html',
+                'altdatalist': 'fs_renderer/alt_datalist.html',
+                'altsearch': 'fs_renderer/alt_search.html'}[selection]
+
     def set_template(self):
         if local_settings.QUESTIONNAIRE:
             qtype = 'alt' + self.rendering_hints['qtype']

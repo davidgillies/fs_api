@@ -7,10 +7,10 @@ from fs_querysets import QuerySet
 from django.forms.models import model_to_dict
 
 
-class CustomDataPrep(cam_apps.DataPrep):
+class CustomDataPrep(fs_apps.DataPrep):
     def __init__(self, section, data):
         super(CustomDataPrep, self).__init__(section, data)
-        self.Question = cam_apps.Question
+        self.Question = fs_apps.Question
 
 #     def get_multi_data(self, table, id):
 #         # should really have a models based version for this too...?
@@ -41,11 +41,14 @@ class CustomDataPrep(cam_apps.DataPrep):
         # not using thw api variable at present
 
 
-class CustomQuestion(cam_apps.Question):
+class CustomQuestion(fs_apps.Question):
     def __init__(self, question_object, app_object, section_object):
         self.surgeries = self.get_surgeries()
         super(CustomQuestion, self).__init__(question_object, app_object, section_object)
 
+    def get_surgeries(self):
+        pass
+        
 #     def get_surgeries(self):
 #         # surgeries = db.surgeries.all()
 # #        surgeries = QuerySet(table_name='surgeries').all()
@@ -64,7 +67,7 @@ class CustomQuestion(cam_apps.Question):
         return {'surgeries': self.surgeries}[option]
 
 
-class CustomQuestionGroup(cam_apps.QuestionGroup):
+class CustomQuestionGroup(fs_apps.QuestionGroup):
     def __init__(self, question_group_object, app_object, section_object):
         super(CustomQuestionGroup, self).__init__(question_group_object, app_object, section_object)
 
@@ -73,7 +76,7 @@ class CustomQuestionGroup(cam_apps.QuestionGroup):
         self.question_group_objects.append(question)
 
 
-class CustomSection(cam_apps.Section):
+class CustomSection(fs_apps.Section):
     def __init__(self, section_xml_object, app_object):
         super(CustomSection, self).__init__(section_xml_object, app_object)
 
@@ -83,7 +86,7 @@ class CustomSection(cam_apps.Section):
         self.section_objects.append(question_group)
 
 
-class CustomApplication(cam_apps.Application):
+class CustomApplication(fs_apps.Application):
     def __init__(self, name, xml):
         super(CustomApplication, self).__init__(name, xml)
 

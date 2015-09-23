@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epi:questionnaire ID="DavidForm1" lang="eng" css="questionnaire.css" xsi:schemaLocation="http://www.mrc-epid.cam.ac.uk/schema/common/epi XSD/questionnaireSchema_010.xsd" xmlns:epi="http://www.mrc-epid.cam.ac.uk/schema/common/epi" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<epi:metadata>
+		<dc:date/>
+		<dc:description/>
+		<dc:identifier/>
+		<dc:publisher/>
+		<dc:title/>
+		<dc:type/>
+		<epi:version/>
+	</epi:metadata>
+	<epi:author>Data Management team</epi:author>
+	<epi:studyName>Fenland</epi:studyName>
+	<epi:versionNumber>1</epi:versionNumber>
+	<epi:versionDate>06/01/2015</epi:versionDate>
+	<epi:title>Demo form for David</epi:title>
+	<epi:section position="0">
+		<epi:title>Introduction</epi:title>
+		<epi:info cssClass="section_header textalign_center">Test Form</epi:info>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="section_textbody">Please press Next and fill in the form.</epi:info>
+			<epi:questionGroup ID="1" position="1">
+				<epi:title/>
+				<epi:renderingHint>
+					<epi:rhType>table</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>shownumber</epi:rhType>
+					<epi:rhData>false</epi:rhData>
+				</epi:renderingHint>
+				<epi:textNode position="1">
+					<epi:info cssClass="textnode_textbody">Search: </epi:info>
+					<epi:renderingHint>
+						<epi:rhType>tdclass</epi:rhType>
+						<epi:rhData>textalign_right</epi:rhData>
+					</epi:renderingHint>
+				</epi:textNode>
+				<epi:question ID="Q1" position="2">
+					<epi:variable ID="search">
+						<epi:varName>search</epi:varName>
+						<epi:dataType>
+							<epi:string>
+								<epi:maxLength>50</epi:maxLength>
+							</epi:string>
+						</epi:dataType>
+					</epi:variable>
+					<epi:renderingHint>
+						<epi:rhType>qtype</epi:rhType>
+						<epi:rhData>search</epi:rhData>
+					</epi:renderingHint>
+					<epi:renderingHint>
+						<epi:rhType>size</epi:rhType>
+						<epi:rhData>50</epi:rhData>
+					</epi:renderingHint>
+					<epi:renderingHint>
+						<epi:rhType>endoftr</epi:rhType>
+						<epi:rhData>true</epi:rhData>
+					</epi:renderingHint>
+					<epi:renderingHint>
+						<epi:rhType>search</epi:rhType>
+						<epi:rhData>true</epi:rhData>
+					</epi:renderingHint>
+				</epi:question>
+			</epi:questionGroup>
+	</epi:section>
+	<epi:section ID="A" position="1">
+		<epi:title/>
+		<epi:questionGroup ID="1" position="1">
+			<epi:title/>
+			<epi:renderingHint>
+				<epi:rhType>table</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>shownumber</epi:rhType>
+				<epi:rhData>false</epi:rhData>
+			</epi:renderingHint>
+			<epi:textNode position="1">
+				<epi:info cssClass="textnode_textbody">Surname: </epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_right</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q1" position="2">
+				<epi:variable ID="var1">
+					<epi:varName>surname</epi:varName>
+					<epi:dataType>
+						<epi:string>
+							<epi:maxLength>50</epi:maxLength>
+						</epi:string>
+					</epi:dataType>
+				</epi:variable>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>text</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>50</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please give an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+					<epi:rule name="CheckMaxLength">
+						<epi:parameter type="string" use="ErrorResponse">Your answer should be less than 50 characters long</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="2">
+				<epi:info cssClass="textnode_textbody">Forenames: </epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_right</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q2" position="3">
+				<epi:variable ID="var2">
+					<epi:varName>forenames</epi:varName>
+					<epi:dataType>
+						<epi:string>
+							<epi:maxLength>50</epi:maxLength>
+						</epi:string>
+					</epi:dataType>
+				</epi:variable>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>text</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>50</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please give an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+					<epi:rule name="CheckMaxLength">
+						<epi:parameter type="string" use="ErrorResponse">Your answer should be less than 50 characters long</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="4">
+				<epi:info cssClass="textnode_textbody">Title: </epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_right</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q3" position="5">
+				<epi:variable ID="var3">
+					<epi:varName>title</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1">
+					<epi:optionText>Mr</epi:optionText>
+					<epi:optionValue>Mr</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionText>Mrs</epi:optionText>
+					<epi:optionValue>Mrs</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionText>Ms</epi:optionText>
+					<epi:optionValue>Ms</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionText>Miss</epi:optionText>
+					<epi:optionValue>Miss</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please give an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="6">
+				<epi:info cssClass="textnode_textbody">DOB: </epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_right</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q4" position="7">
+				<epi:variable ID="var4">
+					<epi:varName>dob</epi:varName>
+					<epi:dataType>
+						<epi:date>
+							<epi:pattern>^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$</epi:pattern>
+						</epi:date>
+					</epi:dataType>
+				</epi:variable>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>text</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>10</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please give an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+					<epi:rule name="MatchesDatePattern">
+						<epi:parameter type="string" use="ErrorResponse">Please enter a valid date</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="8">
+				<epi:info cssClass="textnode_textbody">Surgery: </epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_right</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q5" position="9">
+				<epi:variable ID="var5">
+					<epi:varName>surgery</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>dynamic</epi:optionText>
+					<epi:optionValue>surgeries</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please give an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="10">
+				<epi:info cssClass="textnode_textbody">Diabetes Diagnosed: </epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_right</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q6" position="11">
+				<epi:variable ID="var6">
+					<epi:varName>diabetes</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1">
+					<epi:optionText>True</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionText>False</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionText>None</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please give an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+		</epi:questionGroup>
+	</epi:section>
+	<epi:section position="2">
+		<epi:title/>
+		<epi:questionGroup ID="2" position="1">
+			<epi:title/>
+			<epi:renderingHint>
+				<epi:rhType>table</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>tdclass</epi:rhType>
+				<epi:rhData>bordered</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>shownumber</epi:rhType>
+				<epi:rhData>false</epi:rhData>
+			</epi:renderingHint>
+			<epi:textNode position="1">
+				<epi:info cssClass="textnode_textbody">Appt Date</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+				<epi:rhData>header</epi:rhData>
+			</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="2">
+				<epi:info cssClass="textnode_textbody">Appt Time</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>header</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:textNode position="3">
+				<epi:info cssClass="textnode_textbody">Test Site</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+					<epi:rhData>header</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q7" position="5">
+				<epi:variable ID="varblar">
+					<epi:varName>appt_date</epi:varName>
+					<epi:dataType>
+						<epi:date>
+							<epi:pattern>^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$</epi:pattern>
+						</epi:date>
+					</epi:dataType>
+				</epi:variable>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>text</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>multi</epi:rhType>
+					<epi:rhData>appointments</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>10</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please give an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+					<epi:rule name="MatchesPattern">
+						<epi:parameter type="string" use="ErrorResponse">Please enter a valid date</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:question ID="Q8" position="6">
+				<epi:variable ID="var8">
+					<epi:varName>appt_time</epi:varName>
+					<epi:dataType>
+						<epi:dateTime>
+							<epi:pattern>^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$</epi:pattern>
+						</epi:dateTime>
+					</epi:dataType>
+				</epi:variable>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>text</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>10</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>multi</epi:rhType>
+					<epi:rhData>appointments</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please give an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+					<epi:rule name="MatchesPattern">
+						<epi:parameter type="string" use="ErrorResponse">Please enter a valid time</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:question ID="Q9" position="7">
+				<epi:variable ID="var9">
+					<epi:varName>test_site</epi:varName>
+				</epi:variable>
+				<epi:option position="0">
+					<epi:optionText>Please select...</epi:optionText>
+					<epi:optionValue>-1</epi:optionValue>
+				</epi:option>
+				<epi:option position="1">
+					<epi:optionText>1</epi:optionText>
+					<epi:optionValue>1</epi:optionValue>
+				</epi:option>
+				<epi:option position="2">
+					<epi:optionText>2</epi:optionText>
+					<epi:optionValue>2</epi:optionValue>
+				</epi:option>
+				<epi:option position="3">
+					<epi:optionText>3</epi:optionText>
+					<epi:optionValue>3</epi:optionValue>
+				</epi:option>
+				<epi:option position="4">
+					<epi:optionText>4</epi:optionText>
+					<epi:optionValue>4</epi:optionValue>
+				</epi:option>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>dropdown</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>bordered</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>multi</epi:rhType>
+					<epi:rhData>appointments</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please give an answer</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+		</epi:questionGroup>
+		<epi:externalPrograms>
+			<epi:rule name="CallThing">
+			<epi:parameter type="string" use="Command">python</epi:parameter>
+
+			</epi:rule>
+		</epi:externalPrograms>
+		
+	</epi:section>
+
+
+	<epi:section position="3">
+		<epi:title/>
+		<epi:info>Please press Submit to save your answers</epi:info>
+	</epi:section>
+	<epi:section position="4">
+		<epi:title/>
+		<epi:info cssClass="textbody">Thank you.</epi:info>
+	</epi:section>
+</epi:questionnaire>

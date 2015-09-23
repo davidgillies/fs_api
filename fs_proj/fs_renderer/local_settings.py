@@ -1,7 +1,5 @@
 """
 Local Settings for the renderer.
-
-
 """
 
 # TESTING set to True adds a submission button, and head and body tags to the output 

@@ -12,19 +12,19 @@ class CustomDataPrep(fs_apps.DataPrep):
         super(CustomDataPrep, self).__init__(section, data)
         self.Question = fs_apps.Question
 
-#     def get_multi_data(self, table, id):
-#         # should really have a models based version for this too...?
-# #        qs = QuerySet(table_name='volunteers', related_table='appointments', related_field='volunteers_id')
-# #        qs.get(id)
-# #        objs = qs.related_set()
-# #        return objs
-#         volunteer = Volunteer.objects.get(pk=id)
-#         appts = volunteer.appointment_set.all()
-#         result = []
-#         for appt in appts:
-#             res = model_to_dict(appt)
-#             result.append(res)
-#         return result
+    def get_multi_data(self, table, id):
+        # should really have a models based version for this too...?
+       qs = QuerySet(table_name='volunteers', related_table='appointments', related_field='volunteers_id')
+       qs.get(id)
+       objs = qs.related_set()
+       return objs
+        # volunteer = Volunteer.objects.get(pk=id)
+        # appts = volunteer.appointment_set.all()
+        # result = []
+        # for appt in appts:
+        #     res = model_to_dict(appt)
+        #     result.append(res)
+        # return result
 
     def add_question_value(self, q):
         if q.variable == 'surgery':
@@ -49,13 +49,13 @@ class CustomQuestion(fs_apps.Question):
     def get_surgeries(self):
         pass
         
-#     def get_surgeries(self):
-#         # surgeries = db.surgeries.all()
-# #        surgeries = QuerySet(table_name='surgeries').all()
-# #        result = []
-# #        for surgery in surgeries:
-# #            result.append({'text': surgery['full_name'], 'value': surgery['id']})
-# #        return result
+    def get_surgeries(self):
+        # surgeries = db.surgeries.all()
+       surgeries = QuerySet(table_name='surgeries').all()
+       result = []
+       for surgery in surgeries:
+           result.append({'text': surgery['full_name'], 'value': surgery['id']})
+       return result
 #         surgeries = Surgery.objects.all()
 #         result = []
 #         for surgery in surgeries:

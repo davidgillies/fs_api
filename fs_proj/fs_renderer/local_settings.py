@@ -29,7 +29,8 @@ MODEL_MAPPING = {}
 #                       3: VolunteerForm, 4: VolunteerForm}
 MODEL_FORM_MAPPING = {}
 
-# TABLE_MODEL_MAPPING allows secondary mapping between XML and models.
+# TABLE_MODEL_MAPPING allows secondary mapping between XML and models
+# for multis with the multi attribute in the XML.
 # TABLE_MODEL_MAPPING = {'volunteers': Volunteer, 'appointments': Appointment}
 TABLE_MODEL_MAPPING = {}
 
@@ -37,7 +38,9 @@ TABLE_MODEL_MAPPING = {}
 DATABASE = 'mysql+pymysql://david:david@localhost:3306/mydb'
 
 # XML_FILE to load
-XML_FILE = 'xmlfiles/Fenland.xml'
+# XML_FILE = 'xmlfiles/Fenland.xml'
+XML_FILE = 'U:/Data/pres/fendland-api/fenland_api/xmlfiles/FamHist.xml' # CHANGE 
+
 
 # QUESTIONNAIRE set to True will use django-fsq questionnaire app models.
-QUESTIONNAIRE = False
+QUESTIONNAIRE = True

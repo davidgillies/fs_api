@@ -1,0 +1,66 @@
+
+{% load staticfiles %}
+
+<html>
+	<head>
+		<title>Home</title>
+		
+		<link rel='stylesheet' type='text/css' media='all' href='{% static "html_renderer/questionnaire_bigRadio.css" %}'>
+		<link rel='stylesheet' type='text/css' media='screen and (max-width:800px)' href='/static/html_renderer/questionnaire_bigRadio_small.css'>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+		
+	    <!--script type='text/javascript' src='/static/html_renderer/jquery-1.11.0.min.js'></script-->
+	    <!--script type='text/javascript' src='/static/html_renderer/questionnaire.js'></script-->
+	    
+	</head>
+	
+	<body>
+
+		<div id="page_container">
+		
+			<div id="logos" class="page_structurer">
+			
+				<span id="logoLeft" class="block">
+					<a href="http://www.cam.ac.uk/" title="" target="_blank"><img class="logos" src="/static/html_renderer/UoC_Logo.jpg" alt="" border="none"/></a></span>
+			
+				<span id="participant" class="block">davidg</span>
+			
+				<span id="logoRight" class="block">
+					<a href="http://www.mrc-epid.cam.ac.uk/" title="" target="_blank"><img class="logos" src="/static/html_renderer/WG10-RGB-EU.small.jpg"  alt="" align="right" border="none"/></a></span>
+				
+			</div>
+			
+			<div class="link_div">
+				<form action="/fenland" method="post" class="link_form" id="home_form">
+					<input type="submit" name="home_button" id="home_button" value="Back to main menu" class="link_button" /><br>	
+				</form>
+				<form action="/fenland/logout" method="post" class="link_form" id="logout_form">
+					<input type="submit" name="logout_button" id="logout_button" value="Logout" class="link_button" /><br>	
+				</form>
+			</div>
+			
+			
+			<!-- div id="questionnaire_title" class="page_structurer"><div id="questionnaire_version">V. ELY/PQ/3/607N_04/07/2007</div>	
+			FFQ<div id="participant_id">Participant ID: davidg</div></div>
+				-->
+			<div id="page_content2" class="page_structurer2">
+				
+				{% include 'html_renderer/alt_base2.html' %}	
+					
+			</div>
+				
+			<div id="page_footer" class="page_structurer">
+				<input type="button" name="next_button" id="next_button" value="Next >>" class="navigation_button" title="Press this button to go to the next section" />
+				<input type="button" name="back_button" id="back_button" value="<< Back" class="navigation_button" title="Press this button to go to the previous section"/><span class="footer"></span>
+				<form><input type="hidden" name="submitted" id="submitted" value="no"/></form>
+			</div>
+			
+			<div id="footer_container">
+				<hr/>
+				<div id="footer" class="col-full">
+					<div id="copyright" class="col-left">&copy; 2014 MRC Epidemiology Unit, University of Cambridge</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

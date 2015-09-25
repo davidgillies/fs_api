@@ -1,3 +1,4 @@
+{% load getattribute %}
  {% if section.testing %} 
 <html>
 <head>
@@ -16,21 +17,23 @@
         <input type="hidden" name="id" value="{{data_id}}" />
         <div class="section_title">
             {{section.title}}
+<div id="questionnaire_info">{{ section.app_object.title }} (v. {{ section.app_object.version_number }}_{{ section.app_object.version_date }})</div>
         </div>
             {% for i in section.info %}
                 {% if i.cssClass == 'new_line' %}<br />
-                    {% else %}<div class="{{i.cssClass}}"> {{i.text | safe}}</div>      
+                    {% else %}<div class="{{i.cssClass}}"> {{i.text | safe}}</div>    
                 {% endif %}
             {% endfor %}
-            {% include 'fs_renderer/question_groups.html' %}
+            {% include 'fs_renderer/alt_question_groups.html' %}
             {% if section.testing %} <input class="navigation_button" type="submit" value="submit" /> {% endif %}
 </form>
 </div>    
 
+
  {% if section.testing %} 
- <!--script>
+<script>
 $("#questionnaire_form").validate();
-</script-->
+</script>
 </body>
 </html>
 

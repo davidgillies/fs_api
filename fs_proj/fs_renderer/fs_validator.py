@@ -66,4 +66,7 @@ class Validator(object):
         return (True, None)
 
     def check_int(self, string_value):
-        return (True, None)
+        if string_value.digits:
+            return (True, None)
+        else:
+            return (False, 'Must be an integer')

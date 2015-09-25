@@ -15,4 +15,13 @@ urlpatterns = patterns('',
     url(r'^html/(\w+)/(\w+)', csrf_exempt(fs_renderer_views.HTMLView.as_view())),
     url(r'^html/(\w+)', csrf_exempt(fs_renderer_views.HTMLView.as_view())),
     url(r'^html/', csrf_exempt(fs_renderer_views.HTMLView.as_view())),
+    url(r'^api/(\w+)/(\w+)/(\w+)', csrf_exempt(fs_renderer_views.APIView.as_view())),
+    url(r'^api/(\w+)/(\w+)', csrf_exempt(fs_renderer_views.APIView.as_view())),
+    url(r'^api/(\w+)', csrf_exempt(fs_renderer_views.APIView.as_view())),
+    url(r'^api/', csrf_exempt(fs_renderer_views.APIView.as_view())),
+    url(r'^althtml/(\w+)/(\w+)/(\w+)', csrf_exempt(fs_renderer_views.AltHTMLView.as_view())),
+    url(r'^althtml/(\w+)/(\w+)', csrf_exempt(fs_renderer_views.AltHTMLView.as_view())),
+    url(r'^althtml/(\w+)', csrf_exempt(fs_renderer_views.AltHTMLView.as_view())),
+    url(r'^althtml/', csrf_exempt(fs_renderer_views.AltHTMLView.as_view())),
+
 )

@@ -12,25 +12,26 @@
 
 
 <div class="section">
-    <form style="" onscroll="moveScroll();" id="questionnaire_form" method="POST" >
+    <form style="height: 212px;" onscroll="moveScroll();" id="questionnaire_form" method="POST" >
         <input type="hidden" name="id" value="{{data_id}}" />
         <div class="section_title">
             {{section.title}}
         </div>
             {% for i in section.info %}
                 {% if i.cssClass == 'new_line' %}<br />
-                    {% else %}<div class="{{i.cssClass}}"> {{i.text | safe}}</div>      
+                    {% else %}<div class="{{i.cssClass}}"> {{i.text | safe}}</div>    
                 {% endif %}
             {% endfor %}
-            {% include 'fs_renderer/question_groups.html' %}
+            {% include 'html_renderer/alt_question_groups.html' %}
             {% if section.testing %} <input class="navigation_button" type="submit" value="submit" /> {% endif %}
 </form>
 </div>    
 
+
  {% if section.testing %} 
- <!--script>
+<script>
 $("#questionnaire_form").validate();
-</script-->
+</script>
 </body>
 </html>
 

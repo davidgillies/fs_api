@@ -39,6 +39,8 @@ INSTALLED_APPS = (
     'fs_renderer',
     'django_extensions',
     'rest_framework',
+    'questionnaire',
+    'import_export',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -63,16 +65,24 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
+    'db3': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mrc_epid_fenland',
+        'USER': 'david',
+        'PASSWORD': 'david',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
 }
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny',),
 }
+
+DATABASE_ROUTERS = ['questionnaire.routers.PlayRouter',]
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

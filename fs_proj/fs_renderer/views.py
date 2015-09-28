@@ -98,7 +98,6 @@ class HTMLView(View):
         myDict = dict(request.POST.iterlists())
         for k in myDict.keys():
             myDict[k] = myDict[k][0]
-        print myDict
         if 'id' not in myDict.keys():
             myDict[u'id'] = request.GET['id']
         if 'search' in myDict.keys():
@@ -135,6 +134,9 @@ class AltHTMLView(View):
         else:
             data = {}
             data['id'] = None
+        if fenland_app.plugins['section_plugins']:
+            for plugin in section_obj.plugins:
+                result[plugin] = local_settings.PLUGINS[plugin](data)
         if question_group is None:
             result['section'] = section_obj
             # result['data_id'] = data.id
@@ -143,10 +145,10 @@ class AltHTMLView(View):
         question_group = section_obj.get_question_group(question_group)
         if question is None:
             result['question_group'] = question_group
-            return render(request, 'html_renderer/alt_question_group.html', result)
+            return render(request, 'fs_renderer/alt_question_group.html', result)
         question = question_group.get_question(question)
         result['question'] = question
-        return render(request, 'html_renderer/alt_question.html', result)
+        return render(request, 'fs_renderer/alt_question.html', result)
 
     def post(self, request, section=None, question_group=None, question=None):
         result = {}
@@ -177,9 +179,12 @@ class AltHTMLView(View):
                 data[q.var_name] = q.var_value
             result['data'] = data
             result['section'] = section_obj
-            return render(request, 'html_renderer/alt_base2.html', result)
+            if section_obj.plugins:
+                for plugin in section_obj.plugins:
+                    result[plugin] = local_settings.PLUGINS[plugin](data)
+            return render(request, 'fs_renderer/alt_base2.html', result)
         # section_obj = DataPrep(section_obj, data)
         # section_obj = section_obj.data_prep()
         result['section'] = section_obj
-        return render(request, 'html_renderer/alt_base2.html', result)
+        return render(request, 'fs_renderer/alt_base2.html', result)
 

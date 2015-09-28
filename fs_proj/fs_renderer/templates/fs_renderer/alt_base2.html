@@ -19,13 +19,18 @@
             {{section.title}}
 <div id="questionnaire_info">{{ section.app_object.title }} (v. {{ section.app_object.version_number }}_{{ section.app_object.version_date }})</div>
         </div>
+
+        {% if section.section_level_plugin %}
+            {% include childlist.template %}
+        {% else%}
             {% for i in section.info %}
                 {% if i.cssClass == 'new_line' %}<br />
                     {% else %}<div class="{{i.cssClass}}"> {{i.text | safe}}</div>    
                 {% endif %}
             {% endfor %}
             {% include 'fs_renderer/alt_question_groups.html' %}
-            {% if section.testing %} <input class="navigation_button" type="submit" value="submit" /> {% endif %}
+        {% endif %}
+        {% if section.testing %} <input class="navigation_button" type="submit" value="submit" /> {% endif %}
 </form>
 </div>    
 

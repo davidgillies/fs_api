@@ -20,8 +20,8 @@
 <div id="questionnaire_info">{{ section.app_object.title }} (v. {{ section.app_object.version_number }}_{{ section.app_object.version_date }})</div>
         </div>
 
-        {% if section.section_level_plugin %}
-            {% include childlist.template %}
+        {% if section.plugins %}
+            {% include section.plugin.template %}
         {% else%}
             {% for i in section.info %}
                 {% if i.cssClass == 'new_line' %}<br />

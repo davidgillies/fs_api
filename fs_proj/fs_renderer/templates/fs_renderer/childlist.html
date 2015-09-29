@@ -1,6 +1,6 @@
 
 <table>
-    {% for row in childlist.rows %}
+    {% for row in section.plugin.rows %}
    <tr> <td>Name</td><td><input type="text" name="child_name__{{ forloop.counter }}" value="{{ row.child_name }}" /></td><td>Age:</td><td><input type="text" name="child_age__{{ forloop.counter }}" value="{{ row.child_age }}" /></td>
     {% endfor %}</tr>
 </table>

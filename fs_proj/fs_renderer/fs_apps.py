@@ -10,8 +10,7 @@ from .fs_querysets import QuerySet
 
 class Question(objectifier.Question):
     def __init__(self, question_object, app_object, section_object):
-        self.plugins = []
-        self.question_level_plugin = False
+        self.plugin = ''
         super(Question, self).__init__(question_object, app_object, section_object)
         self.model = self.set_model()
 
@@ -21,9 +20,9 @@ class Question(objectifier.Question):
         for rhdata in item.rhData:
             self.rendering_hints[key] = self.rendering_hints[key] + ' ' + str(rhdata)
             if key == '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}plugin':
-                self.plugins.append(self.rendering_hints[key].strip())
-                self.question_level_plugin = True
-                self.app_object.plugins['questioon_plugins'].append(self.rendering_hints[key].strip())
+                self.section.plugins.append(self)
+                self.plugin = self.rendering_hints[key].strip()
+                # self.app_object.plugins['questioon_plugins'].append(self.rendering_hints[key].strip())
                 # self.section.plugins.append(self.rendering_hints[key].strip())
         self.rendering_hints[key] = self.rendering_hints[key].strip()
 
@@ -69,7 +68,7 @@ class Question(objectifier.Question):
 class QuestionGroup(objectifier.QuestionGroup):
     def __init__(self, question_group_object, app_object, section_object):
         self.testing = local_settings.TESTING
-        self.plugins = []
+        self.plugin = ''
         self.question_group_level_plugin = False
         super(QuestionGroup, self).__init__(question_group_object, app_object, section_object)
 
@@ -79,9 +78,10 @@ class QuestionGroup(objectifier.QuestionGroup):
         for rhdata in item.rhData:
             self.rendering_hints[key] = self.rendering_hints[key] + ' ' + str(rhdata)
             if key == 'plugin':
-                self.plugins.append(self.rendering_hints[key].strip())
+                # self.plugins.append(self.rendering_hints[key].strip())
                 self.question_group_level_plugin = True
-                self.app_object.plugins['question_group_plugins'].append(self.rendering_hints[key].strip())
+                self.section.plugins.append(self)
+                self.plugin = self.rendering_hints[key].strip()
         self.rendering_hints[key] = self.rendering_hints[key].strip()
 
 
@@ -89,6 +89,7 @@ class Section(objectifier.Section):
     def __init__(self, section_xml_object, app_object):
         self.testing = local_settings.TESTING
         self.plugins = []
+        self.plugin = ''
         self.section_level_plugin = False
         super(Section, self).__init__(section_xml_object, app_object)
 
@@ -98,9 +99,10 @@ class Section(objectifier.Section):
         for rhdata in item.rhData:
             self.rendering_hints[key] = self.rendering_hints[key] + ' ' + str(rhdata)
             if key == 'plugin':
-                self.plugins.append(self.rendering_hints[key].strip())
+                self.plugins.append(self)
+                self.plugin = self.rendering_hints[key].strip()
                 self.section_level_plugin = True
-                self.app_object.plugins['section_plugins'].append(self.rendering_hints[key].strip())
+                # self.app_object.plugins['section_plugins'].append(self.rendering_hints[key].strip())
         self.rendering_hints[key] = self.rendering_hints[key].strip()
 
     def section_to_dict(self):
@@ -143,7 +145,7 @@ class Application(objectifier.Application):
         self.model_form_mapping = local_settings.MODEL_FORM_MAPPING
         self.table_model_mapping = local_settings.TABLE_MODEL_MAPPING
         self.testing = local_settings.TESTING
-        self.plugins = {'section_plugins': [], 'question_group_plugins': [], 'question_plugins': []}
+        # self.plugins = {'section_plugins': [], 'question_group_plugins': [], 'question_plugins': []}
         super(Application, self).__init__(name, xml_path)
 
     def set_rendering_hint(self, item):

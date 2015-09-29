@@ -2,6 +2,10 @@
 
 
     {% for question_group in section.section_objects %}
+        {% if question_group.plugin %}
+            {% include question_group.plugin.template %}
+        {% else %}
+
         <div class="questiongroup_title">{{question_group.title}}</div>
              {% for i in question_group.info %}
                 {% if i.cssClass == 'new_line' %}<br />
@@ -9,4 +13,5 @@
                 {% endif %}
             {% endfor %}
         {% include 'fs_renderer/alt_question_group.html'%}
+        {% endif %}
     {% endfor %}

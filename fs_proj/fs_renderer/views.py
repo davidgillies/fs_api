@@ -136,7 +136,8 @@ class AltHTMLView(View):
             data['id'] = None
         if section_obj.plugins:
             for plugin_section in section_obj.plugins:
-                plugin_section.plugin = local_settings.PLUGINS[plugin_section.plugin](data)
+                plugin_section.plugin = local_settings.PLUGINS[plugin_section.plugin](data, plugin_section)
+        # import pdb; pdb.set_trace()
         if question_group is None:
             result['section'] = section_obj
             # result['data_id'] = data.id
@@ -181,7 +182,7 @@ class AltHTMLView(View):
             result['section'] = section_obj
             if section_obj.plugins:
                 for plugin_section in section_obj.plugins:
-                    plugin_section.plugin = local_settings.PLUGINS[plugin_section.plugin](data)
+                    plugin_section.plugin = local_settings.PLUGINS[plugin_section.plugin](data, plugin_section)
             return render(request, 'fs_renderer/alt_base2.html', result)
         # section_obj = DataPrep(section_obj, data)
         # section_obj = section_obj.data_prep()

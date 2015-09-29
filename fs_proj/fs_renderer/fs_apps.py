@@ -19,7 +19,7 @@ class Question(objectifier.Question):
         self.rendering_hints[key] = ''
         for rhdata in item.rhData:
             self.rendering_hints[key] = self.rendering_hints[key] + ' ' + str(rhdata)
-            if key == '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}plugin':
+            if key == 'plugin':
                 self.section.plugins.append(self)
                 self.plugin = self.rendering_hints[key].strip()
                 # self.app_object.plugins['questioon_plugins'].append(self.rendering_hints[key].strip())
@@ -145,7 +145,7 @@ class Application(objectifier.Application):
         self.model_form_mapping = local_settings.MODEL_FORM_MAPPING
         self.table_model_mapping = local_settings.TABLE_MODEL_MAPPING
         self.testing = local_settings.TESTING
-        # self.plugins = {'section_plugins': [], 'question_group_plugins': [], 'question_plugins': []}
+        self.plugins = []
         super(Application, self).__init__(name, xml_path)
 
     def set_rendering_hint(self, item):

@@ -1,9 +1,10 @@
 """
 Plugins
 """
+import fs_apps
 
 class ChildList():
-    def __init__(self, data):
+    def __init__(self, data, caller):
         self.data = data
         self.rows = self.get_rows()
         self.template = 'fs_renderer/childlist.html'
@@ -30,3 +31,27 @@ class ChildList():
             rows.append(child_data)
 
         return rows
+
+
+class TestPlugin():
+    def __init__(self, data, caller):
+        self.data = data
+        self.caller = caller
+        if isinstance(caller,fs_apps.Question):
+            self.template = 'fs_renderer/testplugin_q.html'
+        else:
+            self.template = 'fs_renderer/testplugin.html'
+
+    def profile(self):
+        profile = {}
+        if isinstance(self.caller,fs_apps.Question):
+            profile['name'] = self.caller.variable
+            profile['type'] = 'Question'
+            profile['position'] = self.caller.position
+            profile['section'] = self.caller.section.title
+        if isinstance(self.caller,fs_apps.QuestionGroup):
+            profile['name'] = self.caller.title
+            profile['type'] = 'QuestionGroup'
+            profile['position'] = self.caller.position
+            profile['section'] = self.caller.section.title
+        return profile

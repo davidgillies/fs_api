@@ -20,7 +20,7 @@
 <div id="questionnaire_info">{{ section.app_object.title }} (v. {{ section.app_object.version_number }}_{{ section.app_object.version_date }})</div>
         </div>
 
-        {% if section.plugins %}
+        {% if section.plugin %}
             {% include section.plugin.template %}
         {% else%}
             {% for i in section.info %}

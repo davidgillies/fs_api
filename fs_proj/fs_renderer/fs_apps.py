@@ -69,7 +69,6 @@ class QuestionGroup(objectifier.QuestionGroup):
     def __init__(self, question_group_object, app_object, section_object):
         self.testing = local_settings.TESTING
         self.plugin = ''
-        self.question_group_level_plugin = False
         super(QuestionGroup, self).__init__(question_group_object, app_object, section_object)
 
     def set_rendering_hint(self, item):
@@ -79,7 +78,6 @@ class QuestionGroup(objectifier.QuestionGroup):
             self.rendering_hints[key] = self.rendering_hints[key] + ' ' + str(rhdata)
             if key == 'plugin':
                 # self.plugins.append(self.rendering_hints[key].strip())
-                self.question_group_level_plugin = True
                 self.section.plugins.append(self)
                 self.plugin = self.rendering_hints[key].strip()
         self.rendering_hints[key] = self.rendering_hints[key].strip()
@@ -90,7 +88,6 @@ class Section(objectifier.Section):
         self.testing = local_settings.TESTING
         self.plugins = []
         self.plugin = ''
-        self.section_level_plugin = False
         super(Section, self).__init__(section_xml_object, app_object)
 
     def set_rendering_hint(self, item):
@@ -101,7 +98,6 @@ class Section(objectifier.Section):
             if key == 'plugin':
                 self.plugins.append(self)
                 self.plugin = self.rendering_hints[key].strip()
-                self.section_level_plugin = True
                 # self.app_object.plugins['section_plugins'].append(self.rendering_hints[key].strip())
         self.rendering_hints[key] = self.rendering_hints[key].strip()
 
@@ -153,7 +149,7 @@ class Application(objectifier.Application):
         self.rendering_hints[key] = ''
         for rhdata in item.rhData:
             self.rendering_hints[key] = self.rendering_hints[key] + ' ' + str(rhdata)
-            if key == '{http://www.mrc-epid.cam.ac.uk/schema/common/epi}plugin':
+            if key == 'plugin':
                 self.plugins.append(self.rendering_hints[key].strip())
         self.rendering_hints[key] = self.rendering_hints[key].strip()
 

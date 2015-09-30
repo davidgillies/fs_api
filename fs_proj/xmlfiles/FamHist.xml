@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epi:questionnaire ID="FamHist" lang="eng" css="questionnaire.css" xsi:schemaLocation="http://www.mrc-epid.cam.ac.uk/schema/common/epi XSD/questionnaireSchema_009.xsd" xmlns:epi="http://www.mrc-epid.cam.ac.uk/schema/common/epi" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<epi:metadata>
+		<dc:date/>
+		<dc:description/>
+		<dc:identifier/>
+		<dc:publisher/>
+		<dc:title/>
+		<dc:type/>
+		<epi:version/>
+	</epi:metadata>
+	<epi:author/>
+	<epi:studyName>Fenland</epi:studyName>
+	<epi:versionNumber>2</epi:versionNumber>
+	<epi:versionDate>5/12/2005</epi:versionDate>
+	<epi:title>Family History Questionnare</epi:title>
+	<epi:info cssClass="questionnaire_textbody">Please complete the questionnaire for all family members to indicate if they have/had diabetes. For those family members who have/had diabetes please indicate their approximate age at diagnosis.</epi:info>
+	<epi:info cssClass="questionnaire_textbody">Please do not include any adopted family members or step-brothers/sisters/parents. </epi:info>
+	<epi:info cssClass="questionnaire_textbody">Please do not include gestational diabetes.</epi:info>
+	<epi:info cssClass="questionnaire_textbody">Please try to answer every question.</epi:info>
+	<epi:info cssClass="questionnaire_footer">Your answers will be treated as strictly confidential and will be used only for medical research.</epi:info>
+	<epi:section position="0">
+		<epi:title>Introduction</epi:title>
+		<epi:info cssClass="section_header textalign_center">Family History Questionnare</epi:info>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="section_textbody">Please complete the questionnaire for all family members to indicate if they have/had diabetes. For those family members who have/had diabetes please indicate their approximate age at diagnosis.</epi:info>
+		<epi:info cssClass="section_textbody">Please do &lt;b&gt;not&lt;/b&gt; include any adopted family members or step-brothers/sisters/parents. </epi:info>
+		<epi:info cssClass="section_textbody">Please do &lt;b&gt;not&lt;/b&gt; include gestational diabetes.</epi:info>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="section_textbody">Please try to answer every question.</epi:info>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="new_line"/>
+		<epi:info cssClass="section_footer textalign_center">Your answers will be treated as strictly confidential and will be used only for medical research.</epi:info>
+	</epi:section>
+	<epi:section ID="A" position="1">
+		<epi:title/>
+		<epi:questionGroup ID="1" position="1">
+			<epi:title/>
+			<epi:info cssClass="questiongroup_textbody">How many brothers and sisters do or did you have?</epi:info>
+			<epi:renderingHint>
+				<epi:rhType>table</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>shownumber</epi:rhType>
+				<epi:rhData>false</epi:rhData>
+			</epi:renderingHint>
+			<epi:textNode position="1">
+				<epi:info cssClass="textnode_textbody">Brothers:</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_right</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q1" position="2">
+				<epi:variable ID="2253">
+					<epi:varName>FH03_BrotherTotal</epi:varName>
+					<epi:dataType>
+						<epi:integer/>
+					</epi:dataType>
+				</epi:variable>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>text</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>5</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer. Enter 0 if you don't have any brothers.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+					<epi:rule name="CheckDataType">
+						<epi:parameter type="string" use="ErrorResponse">Please provide a round number</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+			<epi:textNode position="3">
+				<epi:info cssClass="textnode_textbody">Sisters:</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_right</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
+			<epi:question ID="Q2" position="4">
+				<epi:variable ID="2254">
+					<epi:varName>FH02_SisterTotal</epi:varName>
+					<epi:dataType>
+						<epi:integer/>
+					</epi:dataType>
+				</epi:variable>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>text</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>size</epi:rhType>
+					<epi:rhData>5</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="IsAnswered">
+						<epi:parameter type="string" use="ErrorResponse">Please provide an answer. Enter 0 if you don't have any sisters.</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+					<epi:rule name="CheckDataType">
+						<epi:parameter type="string" use="ErrorResponse">Please provide a round number</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+		</epi:questionGroup>
+	</epi:section>
+	<epi:section ID="B" position="2">
+		<epi:title/>
+		<epi:info cssClass="section_textbody">Please complete the table below for all family members to indicate if they have/had diabetes. For those family members who have/had diabetes please indicate their approximate age at diagnosis.</epi:info>
+		<epi:renderingHint>
+			<epi:rhType>plugin</epi:rhType>
+			<epi:rhData>childlist</epi:rhData>
+		</epi:renderingHint>
+	</epi:section>
+	<epi:section position="3">
+		<epi:title>Comments</epi:title>
+		<epi:questionGroup ID="5" position="1">
+			<epi:title/>
+			<epi:info cssClass="questiongroup_textbody">Would you like to add any comments?</epi:info>
+			<epi:renderingHint>
+				<epi:rhType>table</epi:rhType>
+				<epi:rhData>true</epi:rhData>
+			</epi:renderingHint>
+			<epi:renderingHint>
+				<epi:rhType>shownumber</epi:rhType>
+				<epi:rhData>false</epi:rhData>
+			</epi:renderingHint>
+			<epi:question ID="Q40" position="1">
+				<epi:variable ID="1641">
+					<epi:varName>FH38_FamilyHistoryEntryComments</epi:varName>
+					<epi:dataType>
+						<epi:string>
+							<epi:maxLength>500</epi:maxLength>
+						</epi:string>
+					</epi:dataType>
+				</epi:variable>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>multiline</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>rows</epi:rhType>
+					<epi:rhData>5</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>cols</epi:rhType>
+					<epi:rhData>100</epi:rhData>
+				</epi:renderingHint>
+				<epi:restrictions>
+					<epi:rule name="CheckLength">
+						<epi:parameter type="string" use="ErrorResponse">Your answer should be less than 500 characters long</epi:parameter>
+						<epi:parameter type="boolean" use="AllowError">false</epi:parameter>
+					</epi:rule>
+				</epi:restrictions>
+			</epi:question>
+		</epi:questionGroup>
+	</epi:section>
+	<epi:section position="4">
+		<epi:title/>
+		<epi:info cssClass="textbody">Thank you. You have now completed the questionnaire.</epi:info>
+	</epi:section>
+	<epi:section ID="B" position="5">
+		<epi:title/>
+		<epi:info cssClass="section_textbody">Please complete the table below for all family members to indicate if they have/had diabetes. For those family members who have/had diabetes please indicate their approximate age at diagnosis.</epi:info>
+		<epi:questionGroup position='1'>
+			<epi:title>Bla</epi:title>
+			<epi:renderingHint>
+				<epi:rhType>plugin</epi:rhType>
+				<epi:rhData>testplugin</epi:rhData>
+			</epi:renderingHint>
+		</epi:questionGroup>
+	</epi:section>
+	<epi:section ID="B" position="6">
+		<epi:title/>
+		<epi:info cssClass="section_textbody">Please complete the table below for all family members to indicate if they have/had diabetes. For those family members who have/had diabetes please indicate their approximate age at diagnosis.</epi:info>
+		<epi:questionGroup position='1'>
+			<epi:title/>
+			<epi:question ID="Q1" position="2">
+				<epi:variable ID="">
+					<epi:varName>Empty</epi:varName>
+					<epi:dataType>
+						<epi:integer/>
+					</epi:dataType>
+				</epi:variable>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>text</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>plugin</epi:rhType>
+					<epi:rhData>testplugin</epi:rhData>
+				</epi:renderingHint>
+			</epi:question>
+		</epi:questionGroup>
+	</epi:section>
+</epi:questionnaire>

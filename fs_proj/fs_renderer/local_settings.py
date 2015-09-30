@@ -42,7 +42,7 @@ DATABASE = 'mysql+pymysql://david:david@localhost:3306/mydb'
 
 # XML_FILE to load
 # XML_FILE = 'xmlfiles/Fenland.xml'
-XML_FILE = 'U:/Data/pres/fendland-api/fenland_api/xmlfiles/FamHist.xml' # CHANGE 
+XML_FILE = 'xmlfiles/FamHist.xml' # CHANGE 
 
 
 # QUESTIONNAIRE set to True will use django-fsq questionnaire app models.

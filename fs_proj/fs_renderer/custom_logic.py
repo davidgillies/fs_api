@@ -49,19 +49,6 @@ class CustomQuestion(fs_apps.Question):
     def get_surgeries(self):
         pass
         
-    def get_surgeries(self):
-        # surgeries = db.surgeries.all()
-       surgeries = QuerySet(table_name='surgeries').all()
-       result = []
-       for surgery in surgeries:
-           result.append({'text': surgery['full_name'], 'value': surgery['id']})
-       return result
-#         surgeries = Surgery.objects.all()
-#         result = []
-#         for surgery in surgeries:
-#             result.append({'text': surgery.full_name, 'value': surgery.id})
-#         return result
-        
 
     def get_options(self, option):
         return {'surgeries': self.surgeries}[option]

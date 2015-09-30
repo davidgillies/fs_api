@@ -82,6 +82,10 @@ class QuestionGroup(objectifier.QuestionGroup):
                 self.plugin = self.rendering_hints[key].strip()
         self.rendering_hints[key] = self.rendering_hints[key].strip()
 
+    def set_question(self, item):
+        question = Question(item, self.app_object, self.section)
+        self.question_group_objects.append(question)
+
 
 class Section(objectifier.Section):
     def __init__(self, section_xml_object, app_object):
@@ -100,6 +104,12 @@ class Section(objectifier.Section):
                 self.plugin = self.rendering_hints[key].strip()
                 # self.app_object.plugins['section_plugins'].append(self.rendering_hints[key].strip())
         self.rendering_hints[key] = self.rendering_hints[key].strip()
+
+    def set_question_group(self, item):
+        """Creates Question Group instances."""
+        question_group = QuestionGroup(item, self.app_object, self)
+        self.question_groups.append(question_group)
+        self.section_objects.append(question_group)
 
     def section_to_dict(self):
         data = {}
@@ -143,6 +153,14 @@ class Application(objectifier.Application):
         self.testing = local_settings.TESTING
         self.plugins = []
         super(Application, self).__init__(name, xml_path)
+
+
+    def get_sections(self):
+        """Instantiates Section objects for each section."""
+        sections = {}
+        for section in self.xml_object.section:
+            sections[section.attrib['position']] = Section(section, self)
+        return sections
 
     def set_rendering_hint(self, item):
         key = item.rhType.text

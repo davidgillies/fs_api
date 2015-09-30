@@ -137,7 +137,6 @@ class AltHTMLView(View):
         if section_obj.plugins:
             for plugin_section in section_obj.plugins:
                 plugin_section.plugin = local_settings.PLUGINS[plugin_section.plugin](data, plugin_section)
-        # import pdb; pdb.set_trace()
         if question_group is None:
             result['section'] = section_obj
             # result['data_id'] = data.id

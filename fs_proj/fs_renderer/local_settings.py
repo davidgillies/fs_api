@@ -14,7 +14,7 @@ MODELS = False
 
 # CUSTOM set to True will mean that the views.py will load the CustomApplication class
 # from custom_logic.py rather than the Application class from fs_apps.py.
-CUSTOM = True
+CUSTOM = False
 
 # SECTION_MAPPING maps section numbers to primary table names
 SECTION_MAPPING =  {0: 'volunteers', 1: 'volunteers', 2: 'volunteers',

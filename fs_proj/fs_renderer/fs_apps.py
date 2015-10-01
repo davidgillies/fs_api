@@ -51,9 +51,17 @@ class Question(objectifier.Question):
         else:
             self.template = self.get_template(self.rendering_hints['qtype'])
 
+    def set_question(self, item):
+        question = Question(item, self.app_object, self.section)
+        self.question_group_objects.append(question)
 
 class QuestionGroup(objectifier.QuestionGroup):
-    pass
+
+    def set_question_group(self, item):
+        """Creates Question Group instances."""
+        question_group = QuestionGroup(item, self.app_object, self)
+        self.question_groups.append(question_group)
+        self.section_objects.append(question_group)
 
 
 class Section(objectifier.Section):
@@ -89,6 +97,13 @@ class Section(objectifier.Section):
                         else:
                             data[q.variable] = q.var_value
         return data
+
+    def get_sections(self):
+        """Instantiates Section objects for each section."""
+        sections = {}
+        for section in self.xml_object.section:
+            sections[section.attrib['position']] = Section(section, self)
+        return sections
 
 
 class Application(objectifier.Application):

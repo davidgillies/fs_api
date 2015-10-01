@@ -1,9 +1,12 @@
 
-
+        {% if question_group.plugin %}
+            {% include question_group.plugin.template %}
+        {% else %}
       
             <table class="{{ question_group.rendering_hints.tdclass }}">
                 {% include 'fs_renderer/questions.html' %}
             </tr></table>
+        {% endif %}
             
 
 

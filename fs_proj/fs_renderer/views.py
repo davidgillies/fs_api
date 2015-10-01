@@ -9,6 +9,7 @@ from custom_logic import CustomApplication
 from django.views import generic
 from .models import *
 import local_settings
+import plugins
 if local_settings.CUSTOM is True:
     from fs_renderer.custom_logic import CustomDataPrep as DataPrep
 else:
@@ -68,9 +69,6 @@ class HTMLView(View):
         if section is None:
             return HttpResponseNotFound('Page Not Found')
         section_obj = fenland_app.get_section(section)
-        if section_obj.plugins:
-            for plugin_section in section_obj.plugins:
-                plugin_section.plugin = local_settings.PLUGINS[plugin_section.plugin](plugin_section)
         if request.GET:
             id_variable_value = request.GET['id']
             result['id_variable_value'] = id_variable_value
@@ -80,6 +78,9 @@ class HTMLView(View):
         else:
             data = {}
             data['id'] = None
+        if section_obj.plugins:
+            for plugin_section in section_obj.plugins:
+                plugin_section.plugin = plugins.PLUGINS[plugin_section.plugin](plugin_section, data)
         if question_group is None:
             result['section'] = section_obj
             result['data_id'] = data['id']
@@ -97,9 +98,6 @@ class HTMLView(View):
         if section is None:
             return HttpResponseNotFound('Page Not Found')
         section_obj = fenland_app.get_section(section)
-        if section_obj.plugins:
-            for plugin_section in section_obj.plugins:
-                plugin_section.plugin = local_settings.PLUGINS[plugin_section.plugin](plugin_section)
         myDict = dict(request.POST.iterlists())
         for k in myDict.keys():
             myDict[k] = myDict[k][0]
@@ -115,5 +113,8 @@ class HTMLView(View):
             result['data_id'] = data['id']
         section_obj = DataPrep(section_obj, data)
         section_obj = section_obj.data_prep()
+        if section_obj.plugins:
+            for plugin_section in section_obj.plugins:
+                plugin_section.plugin = plugins.PLUGINS[plugin_section.plugin](plugin_section, data)
         result['section'] = section_obj
         return render(request, 'fs_renderer/base.html', result)

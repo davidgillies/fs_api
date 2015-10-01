@@ -1,0 +1,17 @@
+
+
+                    {% if question.position == "1" %}<tr>{% endif %}
+                     <td class="{{question.rendering_hints.tdclass}}" {% if question.rendering_hints.rowspan %} rowspan="{{ question.rendering_hints.rowspan }}" {% endif %} {% if question.rendering_hints.colspan %}colspan="{{ question.rendering_hints.colspan }}" {% endif %} >   {{ question.text }} 
+
+<select id="{{question.var_id}}" name="{{question.variable}}">
+{% for item in question.plugin.surgery_list %}
+    <option id="{{item.text}}" value="{{item.value}}" var_value="{{ question.var_value }}"  {% if item.value|add:"0" == question.var_value|add:"0" %} selected {% endif %}>{{item.text}}  </option>
+{% endfor %}
+</select>
+                     </td>
+                    {% if question.rendering_hints.endoftr == 'True' and not forloop.last %}
+                             </tr><tr>
+                    {% elif question.rendering_hints.endoftr == 'True' and forloop.last %}
+                            </tr>
+                    {% endif %}
+

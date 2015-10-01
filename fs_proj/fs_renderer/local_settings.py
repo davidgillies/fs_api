@@ -1,9 +1,9 @@
 """
 Local Settings for the renderer.
 """
-from plugins import *
 
-PLUGINS = {'testplugin': TestPlugin}
+
+
 
 # TESTING set to True adds a submission button, and head and body tags to the output 
 # so that submission can be tested and the debug_toolbar will operate with it. 

@@ -39,8 +39,6 @@ class Question(objectifier.Question):
             if key == 'plugin':
                 self.section.plugins.append(self)
                 self.plugin = self.rendering_hints[key].strip()
-                # self.app_object.plugins['questioon_plugins'].append(self.rendering_hints[key].strip())
-                # self.section.plugins.append(self.rendering_hints[key].strip())
         self.rendering_hints[key] = self.rendering_hints[key].strip()
 
     def get_template(self, selection):
@@ -77,7 +75,6 @@ class QuestionGroup(objectifier.QuestionGroup):
         for rhdata in item.rhData:
             self.rendering_hints[key] = self.rendering_hints[key] + ' ' + str(rhdata)
             if key == 'plugin':
-                # self.plugins.append(self.rendering_hints[key].strip())
                 self.section.plugins.append(self)
                 self.plugin = self.rendering_hints[key].strip()
         self.rendering_hints[key] = self.rendering_hints[key].strip()
@@ -102,7 +99,6 @@ class Section(objectifier.Section):
             if key == 'plugin':
                 self.plugins.append(self)
                 self.plugin = self.rendering_hints[key].strip()
-                # self.app_object.plugins['section_plugins'].append(self.rendering_hints[key].strip())
         self.rendering_hints[key] = self.rendering_hints[key].strip()
 
     def set_question_group(self, item):

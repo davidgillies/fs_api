@@ -1,4 +1,10 @@
     {% for question in question_group.question_group_objects %}
-        {% include 'fs_renderer/question.html' %}
+
+        {% if question.plugin %}
+            {% include question.plugin.template %}
+        {% else %}
+
+            {% include 'fs_renderer/question.html' %}
+        {% endif %}
 
     {% endfor %}

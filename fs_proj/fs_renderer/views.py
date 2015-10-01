@@ -68,6 +68,9 @@ class HTMLView(View):
         if section is None:
             return HttpResponseNotFound('Page Not Found')
         section_obj = fenland_app.get_section(section)
+        if section_obj.plugins:
+            for plugin_section in section_obj.plugins:
+                plugin_section.plugin = local_settings.PLUGINS[plugin_section.plugin](plugin_section)
         if request.GET:
             id_variable_value = request.GET['id']
             result['id_variable_value'] = id_variable_value
@@ -94,6 +97,9 @@ class HTMLView(View):
         if section is None:
             return HttpResponseNotFound('Page Not Found')
         section_obj = fenland_app.get_section(section)
+        if section_obj.plugins:
+            for plugin_section in section_obj.plugins:
+                plugin_section.plugin = local_settings.PLUGINS[plugin_section.plugin](plugin_section)
         myDict = dict(request.POST.iterlists())
         for k in myDict.keys():
             myDict[k] = myDict[k][0]

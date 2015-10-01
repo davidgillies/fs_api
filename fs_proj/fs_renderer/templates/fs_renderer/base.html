@@ -15,15 +15,21 @@
     <form style="" onscroll="moveScroll();" id="questionnaire_form" method="POST" >
         <input type="hidden" name="id" value="{{data_id}}" />
         <div class="section_title">
-            {{section.title}}
+            {{section.title}} 
         </div>
+
+        {% if section.plugin %}
+            {% include section.plugin.template %}
+        {% else%}
             {% for i in section.info %}
                 {% if i.cssClass == 'new_line' %}<br />
                     {% else %}<div class="{{i.cssClass}}"> {{i.text | safe}}</div>      
                 {% endif %}
             {% endfor %}
             {% include 'fs_renderer/question_groups.html' %}
+        {% endif %}
             {% if section.testing %} <input class="navigation_button" type="submit" value="submit" /> {% endif %}
+
 </form>
 </div>    
 

@@ -1,6 +1,9 @@
 """
 Local Settings for the renderer.
 """
+from plugins import *
+
+PLUGINS = {'testplugin': TestPlugin}
 
 # TESTING set to True adds a submission button, and head and body tags to the output 
 # so that submission can be tested and the debug_toolbar will operate with it. 
@@ -15,7 +18,7 @@ CUSTOM = True
 
 # SECTION_MAPPING maps section numbers to primary table names
 SECTION_MAPPING =  {0: 'volunteers', 1: 'volunteers', 2: 'volunteers',
-                    3: 'volunteers', 4: 'volunteers'}
+                    3: 'volunteers', 4: 'volunteers', 5: 'volunteers',}
 
 # DB_MAPPING is only needed if some model fields have different column names in the database.
 DB_MAPPING = {'surgery': 'surgeries_id', 'surgeries': 'surgeries_id', 'diabetes': 'diabetes_diagnosed'}

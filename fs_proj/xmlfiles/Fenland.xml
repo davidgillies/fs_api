@@ -495,4 +495,27 @@
 		<epi:title/>
 		<epi:info cssClass="textbody">Thank you.</epi:info>
 	</epi:section>
+	<epi:section position="5">
+		<epi:title/>
+		<epi:info>Plugin Test</epi:info>
+		<epi:questionGroup position='1'>
+			<epi:title/>
+			<epi:question ID="Q1" position="2">
+				<epi:variable ID="">
+					<epi:varName>Empty</epi:varName>
+					<epi:dataType>
+						<epi:integer/>
+					</epi:dataType>
+				</epi:variable>
+				<epi:renderingHint>
+					<epi:rhType>qtype</epi:rhType>
+					<epi:rhData>text</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>plugin</epi:rhType>
+					<epi:rhData>testplugin</epi:rhData>
+				</epi:renderingHint>
+			</epi:question>
+		</epi:questionGroup>
+	</epi:section>
 </epi:questionnaire>

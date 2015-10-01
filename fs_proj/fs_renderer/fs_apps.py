@@ -10,8 +10,10 @@ from .fs_querysets import QuerySet
 
 class Question(objectifier.Question):
     def __init__(self, question_object, app_object, section_object):
+        self.plugin = ''
         super(Question, self).__init__(question_object, app_object, section_object)
         self.model = self.set_model()
+
 
     def set_model(self):
         if self.variable in self.app_object.db_mapping.keys():
@@ -27,6 +29,19 @@ class Question(objectifier.Question):
                     self.model = self.app_object.table_model_mapping[self.rendering_hints['multi']]
             else:
                 self.model = None
+
+
+    def set_rendering_hint(self, item):
+        key = item.rhType.text
+        self.rendering_hints[key] = ''
+        for rhdata in item.rhData:
+            self.rendering_hints[key] = self.rendering_hints[key] + ' ' + str(rhdata)
+            if key == 'plugin':
+                self.section.plugins.append(self)
+                self.plugin = self.rendering_hints[key].strip()
+                # self.app_object.plugins['questioon_plugins'].append(self.rendering_hints[key].strip())
+                # self.section.plugins.append(self.rendering_hints[key].strip())
+        self.rendering_hints[key] = self.rendering_hints[key].strip()
 
     def get_template(self, selection):
         return {'radio': 'fs_renderer/radio.html',
@@ -51,23 +66,50 @@ class Question(objectifier.Question):
         else:
             self.template = self.get_template(self.rendering_hints['qtype'])
 
+class QuestionGroup(objectifier.QuestionGroup):
+    def __init__(self, question_group_object, app_object, section_object):
+        self.plugin = ''
+        super(QuestionGroup, self).__init__(question_group_object, app_object, section_object)
+
+    def set_rendering_hint(self, item):
+        key = item.rhType.text
+        self.rendering_hints[key] = ''
+        for rhdata in item.rhData:
+            self.rendering_hints[key] = self.rendering_hints[key] + ' ' + str(rhdata)
+            if key == 'plugin':
+                # self.plugins.append(self.rendering_hints[key].strip())
+                self.section.plugins.append(self)
+                self.plugin = self.rendering_hints[key].strip()
+        self.rendering_hints[key] = self.rendering_hints[key].strip()
+
     def set_question(self, item):
         question = Question(item, self.app_object, self.section)
         self.question_group_objects.append(question)
 
-class QuestionGroup(objectifier.QuestionGroup):
+
+class Section(objectifier.Section):
+    def __init__(self, section_xml_object, app_object):
+        self.testing = local_settings.TESTING
+        self.plugins = []
+        self.plugin = ''
+        super(Section, self).__init__(section_xml_object, app_object)
+
+    def set_rendering_hint(self, item):
+        key = item.rhType.text
+        self.rendering_hints[key] = ''
+        for rhdata in item.rhData:
+            self.rendering_hints[key] = self.rendering_hints[key] + ' ' + str(rhdata)
+            if key == 'plugin':
+                self.plugins.append(self)
+                self.plugin = self.rendering_hints[key].strip()
+                # self.app_object.plugins['section_plugins'].append(self.rendering_hints[key].strip())
+        self.rendering_hints[key] = self.rendering_hints[key].strip()
 
     def set_question_group(self, item):
         """Creates Question Group instances."""
         question_group = QuestionGroup(item, self.app_object, self)
         self.question_groups.append(question_group)
         self.section_objects.append(question_group)
-
-
-class Section(objectifier.Section):
-    def __init__(self, section_xml_object, app_object):
-        super(Section, self).__init__(section_xml_object, app_object)
-        self.testing = local_settings.TESTING
 
     def section_to_dict(self):
         data = {}
@@ -116,6 +158,7 @@ class Application(objectifier.Application):
         self.model_form_mapping = local_settings.MODEL_FORM_MAPPING
         self.table_model_mapping = local_settings.TABLE_MODEL_MAPPING
         self.testing = local_settings.TESTING
+        self.plugins = []
         super(Application, self).__init__(name, xml_path)
 
     def get_data(self, section_number, id_variable, id_variable_value):
@@ -147,7 +190,6 @@ class Application(objectifier.Application):
                 data = self.search(json_dict['search'], section_number)
             else:
                 validator = Validator(self.validator, json_dict)
-                print json_dict, self.validator
                 if validator.is_valid():
                     for k in json_dict.keys():
                         if k in self.db_mapping.keys():
@@ -228,6 +270,22 @@ class Application(objectifier.Application):
     def get_section(self, section_number):
         return deepcopy(self.sections[str(section_number)])
 
+
+    def get_sections(self):
+        """Instantiates Section objects for each section."""
+        sections = {}
+        for section in self.xml_object.section:
+            sections[section.attrib['position']] = Section(section, self)
+        return sections
+
+    def set_rendering_hint(self, item):
+        key = item.rhType.text
+        self.rendering_hints[key] = ''
+        for rhdata in item.rhData:
+            self.rendering_hints[key] = self.rendering_hints[key] + ' ' + str(rhdata)
+            if key == 'plugin':
+                self.plugins.append(self.rendering_hints[key].strip())
+        self.rendering_hints[key] = self.rendering_hints[key].strip()
 
 class DataPrep(object):
     def __init__(self, section, data):

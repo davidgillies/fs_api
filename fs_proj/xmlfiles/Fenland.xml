@@ -250,6 +250,10 @@
 				<epi:variable ID="var5">
 					<epi:varName>surgery</epi:varName>
 				</epi:variable>
+				<epi:renderingHint>
+					<epi:rhType>plugin</epi:rhType>
+					<epi:rhData>surgery_list</epi:rhData>
+				</epi:renderingHint>
 				<epi:option position="0">
 					<epi:optionText>dynamic</epi:optionText>
 					<epi:optionValue>surgeries</epi:optionValue>

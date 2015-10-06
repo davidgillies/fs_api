@@ -1,3 +1,6 @@
+                {% if question.plugin %}
+                    {% include question.plugin.template %}
+                {% else %}
 
 
 
@@ -9,6 +12,7 @@
                     {% elif question.rendering_hints.endoftr == 'True' and forloop.last %}
                             </tr>
                     {% endif %}
+                {% endif %}
 
 
 

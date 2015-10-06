@@ -2,6 +2,7 @@ import json
 from django.http import HttpResponseNotFound
 from django.views.generic import View
 from django.shortcuts import render
+from django.core.exceptions import ValidationError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -163,16 +164,26 @@ class AltHTMLView(View):
             result['search_results'] = fenland_app.search(myDict['search'], section)
             data = {}
         else:
-
+            for qg in section_obj.question_groups:
+                for q in qg.question_group_objects:
+                    try:
+                        if q.variable in myDict.keys():
+                            try:
+                                q.validator.clean(myDict[q.variable])
+                            except ValidationError as e:
+                                section_obj.errors[q.variable] = unicode(e[0])
+                    except:
+                        pass
             q_data = Results.objects.filter(user_id=id_variable_value).filter(questionnaire_id=section_obj.app_object.id)
             user = Users.objects.get(user_id=id_variable_value)
-            for q in q_data:
-                if q.var_name in myDict.keys():
-                    q.var_value = myDict[q.var_name]
-                    myDict.pop(q.var_name)
-                    q.save()
-            for q in myDict.keys():
-                Results.objects.create(user=user, questionnaire_id=section_obj.app_object.id, var_name=q, var_value=myDict[q])
+            if not section_obj.errors:
+                for q in q_data:
+                    if q.var_name in myDict.keys():
+                        q.var_value = myDict[q.var_name]
+                        myDict.pop(q.var_name)
+                        q.save()
+                for q in myDict.keys():
+                    Results.objects.create(user=user, questionnaire_id=section_obj.app_object.id, var_name=q, var_value=myDict[q])
             q_data = Results.objects.filter(user_id=id_variable_value).filter(questionnaire_id=section_obj.app_object.id)
             data={}
             for q in q_data:

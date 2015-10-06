@@ -203,6 +203,17 @@
 		<epi:info cssClass="section_textbody">Please complete the table below for all family members to indicate if they have/had diabetes. For those family members who have/had diabetes please indicate their approximate age at diagnosis.</epi:info>
 		<epi:questionGroup position='1'>
 			<epi:title/>
+			<epi:textNode position="1">
+				<epi:info cssClass="textnode_textbody">Sisters:</epi:info>
+				<epi:renderingHint>
+					<epi:rhType>tdclass</epi:rhType>
+					<epi:rhData>textalign_right</epi:rhData>
+				</epi:renderingHint>
+				<epi:renderingHint>
+					<epi:rhType>endoftr</epi:rhType>
+					<epi:rhData>true</epi:rhData>
+				</epi:renderingHint>
+			</epi:textNode>
 			<epi:question ID="Q1" position="2">
 				<epi:variable ID="">
 					<epi:varName>Empty</epi:varName>

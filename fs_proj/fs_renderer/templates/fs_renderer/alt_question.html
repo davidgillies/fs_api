@@ -4,7 +4,6 @@
 
 
 
-
                     {% if question.position == "1" %}<tr>{% endif %}
                     <td class="{{question.rendering_hints.tdclass}}" {% if question.rendering_hints.rowspan %} rowspan="{{ question.rendering_hints.rowspan }}" {% endif %} {% if question.rendering_hints.colspan %}colspan="{{ question.rendering_hints.colspan }}" {% endif %} >   {{ question.text }}  {% if question.template %}{% include question.template %}{% endif %}</td>
                     {% if question.rendering_hints.endoftr == 'True' and not forloop.last %}
@@ -13,7 +12,3 @@
                             </tr>
                     {% endif %}
                 {% endif %}
-
-
-
-    

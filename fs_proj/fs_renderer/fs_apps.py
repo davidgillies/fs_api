@@ -4,6 +4,7 @@ from xml_objectifier import objectifier
 import datetime
 import simplejson
 import local_settings
+from django import forms
 from django.forms.models import model_to_dict
 from .fs_validator import Validator
 from .fs_querysets import QuerySet
@@ -12,7 +13,30 @@ class Question(objectifier.Question):
     def __init__(self, question_object, app_object, section_object):
         self.plugin = ''
         super(Question, self).__init__(question_object, app_object, section_object)
+        self.validator = self.set_validator()
         self.model = self.set_model()
+
+    def set_validator(self):
+        if 'CheckMaxLength' in self.restrictions.keys():
+            self.maxlength = self.data_type['maxLength']
+        if 'IsAnswered' in self.restrictions.keys():
+            if self.restrictions['IsAnswered']['AllowError'] == 'false':
+                self.required = True
+        if self.maxlength and self.required:
+            return self.fields(self.data_type['type'])(maxlength=self.maxlength, required=True)
+        elif self.maxlength and not self.required:
+            return self.fields(self.data_type['type'])(maxlength=self.maxlength, required=False)
+        elif not self.maxlength and self.required:
+            return self.fields(self.data_type['type'])(required=True)
+        elif not self.maxlength and not self.required:
+            return self.fields(self.data_type['type'])(required=False)
+
+
+    def fields(self, field_type):
+        return {'text': forms.CharField, 'string': forms.CharField, 'integer': forms.IntegerField,
+                'real': forms.FloatField, 'date': forms.DateField,
+                'dateTime': forms.DateTimeField, 'time': forms.TimeField,
+                }[field_type]
 
     def set_rendering_hint(self, item):
         key = item.rhType.text
@@ -200,7 +224,6 @@ class Application(objectifier.Application):
                 data = self.search(json_dict['search'], section_number)
             else:
                 validator = Validator(self.validator, json_dict)
-                print json_dict, self.validator
                 if validator.is_valid():
                     for k in json_dict.keys():
                         if k in self.db_mapping.keys():

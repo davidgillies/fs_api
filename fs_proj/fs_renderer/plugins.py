@@ -7,6 +7,7 @@ from questionnaire.models import *
 class ChildList():
     def __init__(self, data, caller):
         self.data = data
+        self.caller = caller
         self.rows = self.get_rows()
         self.template = 'fs_renderer/childlist.html'
 

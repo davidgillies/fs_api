@@ -4,7 +4,7 @@
 <input {% if question.var_value != None %}id="{{question.var_id}}"{% endif %} type="text" name="{{question.variable}}" value="{% if data|getattribute:question.variable != None %}{{data|getattribute:question.variable}}{% endif %}" {% if question.required %}required{% endif %} />
 {%  if section.errors %} 
 {% for k, v in section.errors.iteritems %}
-   {% ifequal k.lower question.variable %}
+   {% ifequal k question.variable %}
        {{ v }}
    {% endifequal %}
 {% endfor %}

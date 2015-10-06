@@ -44,3 +44,7 @@ XML_FILE = 'xmlfiles/Fenland.xml'
 
 # QUESTIONNAIRE set to True will use django-fsq questionnaire app models.
 QUESTIONNAIRE = False
+
+from plugins import *
+
+PLUGINS = {'testplugin': TestPlugin, 'surgery_list': SurgeryList}

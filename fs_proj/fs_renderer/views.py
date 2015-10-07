@@ -80,7 +80,7 @@ class HTMLView(View):
             data['id'] = None
         if section_obj.plugins:
             for plugin_section in section_obj.plugins:
-                plugin_section.plugin = plugins.PLUGINS[plugin_section.plugin](plugin_section, data)
+                plugin_section.plugin = local_settings.PLUGINS[plugin_section.plugin](plugin_section, data)
         if question_group is None:
             result['section'] = section_obj
             result['data_id'] = data['id']
@@ -115,6 +115,6 @@ class HTMLView(View):
         section_obj = section_obj.data_prep()
         if section_obj.plugins:
             for plugin_section in section_obj.plugins:
-                plugin_section.plugin = plugins.PLUGINS[plugin_section.plugin](plugin_section, data)
+                plugin_section.plugin = local_settings.PLUGINS[plugin_section.plugin](plugin_section, data)
         result['section'] = section_obj
         return render(request, 'fs_renderer/base.html', result)

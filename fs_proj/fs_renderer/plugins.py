@@ -20,5 +20,3 @@ class SurgeryList():
            result.append({'text': surgery['full_name'], 'value': surgery['id']})
        return result
 
-
-PLUGINS = {'testplugin': TestPlugin, 'surgery_list': SurgeryList}

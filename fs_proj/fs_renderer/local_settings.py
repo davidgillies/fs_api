@@ -41,8 +41,8 @@ TABLE_MODEL_MAPPING = {}
 DATABASE = 'mysql+pymysql://david:david@localhost:3306/mydb'
 
 # XML_FILE to load
-# XML_FILE = 'xmlfiles/Fenland.xml'
-XML_FILE = 'C:/Fenland/xmlfiles/RPAQtest3_v10.xml' # CHANGE 
+XML_FILE = 'xmlfiles/Fenland.xml'
+# XML_FILE = 'C:/Fenland/xmlfiles/RPAQtest3_v10.xml' # CHANGE 
 
 
 # QUESTIONNAIRE set to True will use django-fsq questionnaire app models.

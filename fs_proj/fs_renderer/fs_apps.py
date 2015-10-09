@@ -17,19 +17,22 @@ class Question(objectifier.Question):
         self.model = self.set_model()
 
     def set_validator(self):
-        if 'CheckMaxLength' in self.restrictions.keys():
-            self.maxlength = self.data_type['maxLength']
-        if 'IsAnswered' in self.restrictions.keys():
-            if self.restrictions['IsAnswered']['AllowError'] == 'false':
-                self.required = True
-        if self.maxlength and self.required:
-            return self.fields(self.data_type['type'])(maxlength=self.maxlength, required=True)
-        elif self.maxlength and not self.required:
-            return self.fields(self.data_type['type'])(maxlength=self.maxlength, required=False)
-        elif not self.maxlength and self.required:
-            return self.fields(self.data_type['type'])(required=True)
-        elif not self.maxlength and not self.required:
-            return self.fields(self.data_type['type'])(required=False)
+        try:
+            if 'CheckMaxLength' in self.restrictions.keys():
+                self.maxlength = self.data_type['maxLength']
+            if 'IsAnswered' in self.restrictions.keys():
+                if self.restrictions['IsAnswered']['AllowError'] == 'false':
+                    self.required = True
+            if self.maxlength and self.required:
+                return self.fields(self.data_type['type'])(maxlength=self.maxlength, required=True)
+            elif self.maxlength and not self.required:
+                return self.fields(self.data_type['type'])(maxlength=self.maxlength, required=False)
+            elif not self.maxlength and self.required:
+                return self.fields(self.data_type['type'])(required=True)
+            elif not self.maxlength and not self.required:
+                return self.fields(self.data_type['type'])(required=False)
+        except: 
+            pass
 
 
     def fields(self, field_type):
@@ -79,7 +82,8 @@ class Question(objectifier.Question):
                 'altmultiline': 'fs_renderer/alt_textarea.html',
                 'altrange': 'fs_renderer/alt_range.html',
                 'altdatalist': 'fs_renderer/alt_datalist.html',
-                'altsearch': 'fs_renderer/alt_search.html'}[selection]
+                'altsearch': 'fs_renderer/alt_search.html',
+                'altpassword': 'fs_renderer/text.html',}[selection]
 
     def set_template(self):
         if local_settings.QUESTIONNAIRE:

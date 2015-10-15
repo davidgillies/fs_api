@@ -188,7 +188,10 @@ class AltHTMLView(View):
             data={}
             for q in q_data:
                 data[q.var_name] = q.var_value
-            result['data'] = data
+            if not section.errors:
+                result['data'] = data
+            else:
+                result['data'] = myDict
             result['section'] = section_obj
             if section_obj.plugins:
                 for plugin_section in section_obj.plugins:

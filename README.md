@@ -1,5 +1,7 @@
 # Form System Extension 
 
+Note:  The dev branch has been extracted and now forms the django-api2 repo.  Please use that to work with the Questionnaire models and database.
+
 This version is based on an external relational database that is connected to Django only in the local_settings.py and not in Django settings.  It doesn't use models by default.  It uses an example MySQL database and Fenland.xml which matches up to the database data.  You can change both local_settings varaibles for DATABASE and XML_FILE and it should all work right away as long as your XML file's field names match your database names.
 
 This project works with a local database that needs to set up in MySQL.  There are Dumps of the test database included in the project.  If you set up a MySQL database using the dumps and change the DATABASE setting in fs_proj/fs_renderer/local_settings.py then hopefully it should all work when installed.
